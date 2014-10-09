@@ -63,7 +63,7 @@ use warnings;
 
 use File::Find;
 use Flickr::Upload;
-use Getopt::Long qw(:config posix_default no_ignore_case gnu_compat);
+use Getopt::Long qw(:config no_ignore_case no_auto_abbrev gnu_compat);
 use Pod::Usage;
 
 use PLib;
