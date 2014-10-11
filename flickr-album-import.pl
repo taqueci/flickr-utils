@@ -68,6 +68,8 @@ use Pod::Usage;
 
 use PLib;
 
+my $FILE_SIZE_MAX = 300 * 1024 * 1024;
+
 # Override URLs.
 my $uri = 'https://api.flickr.com/services/upload/';
 my $rest_uri = 'https://api.flickr.com/services/rest/';
@@ -163,7 +165,7 @@ sub upload_file {
 	my ($api, $file, $arg) = @_;
 
 	# Check file size.
-	if (-s $file > 300000000) {
+	unless (-s $file <= $FILE_SIZE_MAX) {
 		p_error("$file: Size too large");
 		return undef;
 	}
